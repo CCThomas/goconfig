@@ -2,7 +2,7 @@
 Golang Configuration Package to assist with developing simple micro services.
 
 ## Version
-github.com/ccthomas/goconfig v0.1
+github.com/CCThomas/goconfig v0.1
 
 ## Requirements
 - Golang verison [1.6](https://golang.org/doc/go1.6)
@@ -18,7 +18,7 @@ github.com/ccthomas/goconfig v0.1
 
 ### Logger
 ```go
-import "github.com/ccthomas/goconfig"
+import "github.com/CCThomas/goconfig"
 goconfig.ConfigureLogrus()
 ```
 
