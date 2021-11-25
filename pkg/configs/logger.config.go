@@ -19,7 +19,7 @@ func ConfigureLogrus() {
   // Only log the warning severity or above.
   logLevelStr := os.Getenv("LOG_LEVEL")
   logLevel := log.ErrorLevel
-  if logLevelStr == "" {
+  if logLevelStr != "" {
     var err error
     logLevel, err = log.ParseLevel(logLevelStr)
     if err != nil {
