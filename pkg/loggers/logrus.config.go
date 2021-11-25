@@ -1,4 +1,4 @@
-package configs
+package loggers
 
 import (
   "io"
