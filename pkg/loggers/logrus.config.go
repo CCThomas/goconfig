@@ -9,6 +9,10 @@ import (
 )
 
 func ConfigureLogrus() {
+  // Load the .env file in the current directory
+  log.Infof("Loading .env file.")
+  godotenv.Load()
+
   // Log as JSON instead of the default ASCII formatter.
   log.SetFormatter(&log.TextFormatter{FullTimestamp: true})
 
@@ -17,20 +21,20 @@ func ConfigureLogrus() {
   log.SetOutput(os.Stdout)
 
   // Only log the warning severity or above.
-  logLevelStr := os.Getenv("LOG_LEVEL")
+  logLevelStr := os.Getenv("GOCONFIG_LOG_LEVEL")
   logLevel := log.ErrorLevel
   if logLevelStr != "" {
     var err error
     logLevel, err = log.ParseLevel(logLevelStr)
     if err != nil {
-      panic("invalid environment variable value set for: LOG_LEVEL")
+      panic("invalid environment variable value set for 'GOCONFIG_LOG_LEVEL': " + logLevelStr)
     }
   }
 
   log.SetLevel(logLevel)
 
   // Configure Logger.
-  logFileName := os.Getenv("LOG_FILE_NAME")
+  logFileName := os.Getenv("GOCONFIG_LOG_FILE_NAME")
   if logFileName == "" {
     logFileName = "logfile.log"
   }
@@ -41,12 +45,8 @@ func ConfigureLogrus() {
   }
 
   // Configure if we should log to terminal.
-  if os.Getenv("LOG_TO_TERMINAL") == "true" {
+  if os.Getenv("GOCONFIG_LOG_TO_TERMINAL") == "true" {
     multi := io.MultiWriter(file, os.Stdout)
     log.SetOutput(multi)
   }
-
-  // Load the .env file in the current directory
-  log.Infof("Loading .env file.")
-  godotenv.Load()
 }
