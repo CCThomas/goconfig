@@ -12,14 +12,19 @@ github.com/CCThomas/goconfig v0.1
 ### Envrionemnt Variables
 | Variable | Notes |
 | --- | --- |
-| `LOG_FILE_NAME` | Name of log file. |
-| `LOG_LEVEL` | Log levels can be found [here](https://github.com/sirupsen/logrus#level-logging). |
-| `LOG_TO_TERMINAL` | If `true `, logs will be printed to the terminal  |
+| `GOCONFIG_LOG_FILE_NAME` | Name of log file. |
+| `GOCONFIG_LOG_LEVEL` | Log levels can be found [here](https://github.com/sirupsen/logrus#level-logging). |
+| `GOCONFIG_LOG_TO_TERMINAL` | If `true `, logs will be printed to the terminal  |
 
 ### Logger
 ```go
-import "github.com/CCThomas/goconfig"
-goconfig.ConfigureLogrus()
+import "github.com/CCThomas/goconfig/pkg/loggers"
+loggers.ConfigureLogrus()
+```
+```env
+GOCONFIG_LOG_FILE_NAME=my-service.log
+GOCONFIG_LOG_LEVEL=debug
+GOCONFIG_LOG_TO_TERMINAL=true
 ```
 
 ## Third Party
