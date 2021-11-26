@@ -46,11 +46,32 @@ GOCONFIG_DB_PORT=5434
 GOCONFIG_DB_SSLMODE=disable
 ```
 
+### Web
+Get Json
+```go
+import (
+  "github.com/CCThomas/goconfig/pkg/web"
+  "github.com/gin-gonic/gin"
+)
+// c *gin.Context
+requestJson, err := web.GetJson(c)
+if err != nil {
+  // Response has already been set.
+  return
+}
+```
+
 ## Third Party
+- [github.com/gin-gonic/gin v1.7.7](https://github.com/gin-gonic/gin) - MIT License
+    - Gin is a web framework written in Go (Golang).
 - [github.com/joho/godotenv v1.4.0](https://github.com/joho/godotenv) - MIT License
     - Go (golang) port of the Ruby dotenv project (which loads env vars from a .env file)
 - [github.com/sirupsen/logrus v1.8.1](https://github.com/sirupsen/logrus) - MIT License
     - Logrus is a structured logger for Go (golang), completely API compatible with the standard library logger.
+- [gopkg.in/go-playground/assert.v1 v1.2.1](https://github.com/go-playground/assert) - MIT License
+    - Package assert is a Basic Assertion library used along side native go testing
+- [gopkg.in/go-playground/validator.v9 v9.29.1](https://github.com/go-playground/validator/) - MIT License
+    - Package validator implements value validations for structs and individual fields based on tags.
 - [gorm.io/driver/postgres v1.2.2](https://github.com/go-gorm/postgres) - MIT License
     - postgres's database/sql driver for Gorm
 - [gorm.io/gorm v1.22.3](https://gorm.io) - MIT License
